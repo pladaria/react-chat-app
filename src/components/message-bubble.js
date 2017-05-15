@@ -182,8 +182,8 @@ const Media = ({url, title, description, image, embed, isOwnMessage}) => (
 const isImg = ({title, description, image, url} = {}) => url && !title && !description && !image;
 
 const markRenderers = {
-    '*': ({children}) => <span style={{fontWeight: 'bold'}}>{children}</span>,
     _: ({children}) => <span style={{fontStyle: 'italic'}}>{children}</span>,
+    '*': ({children}) => <span style={{fontWeight: 'bold'}}>{children}</span>,
     '~': ({children}) => <span style={{textDecoration: 'line-through'}}>{children}</span>,
     '`': ({children}) => <span style={{fontFamily: 'monospace'}}>{children}</span>,
 };
@@ -201,7 +201,6 @@ const MessageBubble = ({sender, text, media, time, me}: Props) => {
 
     const MessageWrapper = isOwnMessage ? OwnMessage : OtherMessage;
     const ImgWrapper = isOwnMessage ? OwnImage : OtherImage;
-    console.log(text);
     return isImg(media)
         ? <ImgWrapper sender={sender}>
               <div style={{position: 'relative'}}>
